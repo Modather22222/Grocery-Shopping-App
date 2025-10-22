@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:myapp/theme.dart';
+import './category_screen.dart';
+import './theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,13 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       _buildHomePage(),
-      const Center(child: Text('Categories Page')),
+      const CategoryScreen(),
       const Center(child: Text('Favourite Page')),
       const Center(child: Text('More Page')),
     ];
 
     return Scaffold(
-      appBar: _buildHomeAppBar(),
+      appBar: _selectedIndex == 0 ? _buildHomeAppBar() : null,
       body: pages[_selectedIndex],
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
